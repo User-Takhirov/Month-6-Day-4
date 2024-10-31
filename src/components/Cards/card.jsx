@@ -2,7 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 export const Card = () => {
   const dispatch = useDispatch();
-  const userList = useSelector((state) => state.userList);
+  const userList = useSelector((state) => state.user.userList);
+  const count = useSelector((state) => state.count.count);
+
   const DeleteUser = (id) => {
     dispatch({ type: "DeleteUser", id });
   };
@@ -15,12 +17,14 @@ export const Card = () => {
   return (
     <>
       <div className="container text-center mt-[30px]">
-        {userList.map((item) => (
+        {userList?.map((item) => (
           <div
             className=" bg-blue-400 rounded-[10px] w-[400px] p-[20px] mx-auto mb-[20px]"
             key={item.id}
           >
-            <h1 className="text-white mb-[10px] capitalize font-[600]">{item.userList}</h1>
+            <h1 className="text-white text-4xl mb-[10px] capitalize font-[600]">
+              {item.userList}
+            </h1>
             <div className="flex  justify-center gap-[10px]">
               <button
                 onClick={() => DeleteUser(item.id)}
@@ -39,6 +43,24 @@ export const Card = () => {
             </div>
           </div>
         ))}
+        <div className="bg-red-600 rounded-[20px] p-[20px] w-[400px] mx-auto">
+          <h1 className="font-[700] text-[25px] text-white">Counter</h1>
+          <h1 className="font-[500] text-4xl text-white mb-[5px]">{count}</h1>
+          <div className="text-white mt-[15px] flex gap-[10px] justify-center">
+            <button
+              className="p-[10px] rounded-[5px] bg-blue-400 text-[18px] "
+              onClick={() => dispatch({ type: "Increment" })}
+            >
+              +
+            </button>
+            <button
+              className="p-[10px] rounded-[5px] bg-blue-400 text-[18px] "
+              onClick={() => dispatch({ type: "Decrement" })}
+            >
+              -
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
