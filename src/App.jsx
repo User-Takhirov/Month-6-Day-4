@@ -9,11 +9,6 @@ function App() {
     <>
       <Form />
       <Card />
-      <div className="container">
-        <h1 className="text-4xl">{count}</h1>
-        <button onClick={() => dispatch({ type: "increment" })}>+</button>
-        <button onClick={() => dispatch({ type: "decrement" })}>-</button>
-      </div>
     </>
   );
 }
