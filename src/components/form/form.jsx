@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
+
 export const Form = () => {
   const { handleSubmit, reset, register } = useForm();
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ export const Form = () => {
           onSubmit={handleSubmit(submit)}
         >
           <div className="form-control">
-            <input {...register("userList")} className="capitalize font-[600]" type="value" />
+            <input
+              className="capitalize font-[600]"
+              type="text"
+              {...register("userList")}
+            />
             <label>
               <span style={{ transitionDelay: "0ms" }}>U</span>
               <span style={{ transitionDelay: "50ms" }}>s</span>
